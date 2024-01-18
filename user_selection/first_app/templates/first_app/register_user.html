@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>регистрация пользователя</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {% for field in form %}
+        <ul>
+        <li>{{ field }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+
+    <div>
+        <button type="submit">Регистрация</button> |
+        <button type="reset">очистить форму</button>
+    </div>
+</form>
+</body>
+</html>
