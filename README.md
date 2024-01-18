@@ -9,12 +9,3 @@ Offer (bool).
 Avatar (аватар пользователя).
 (views.py, serializer.py, admin.py urls.py (GET /api/users/{id})
 5. Используя Django command, создать команду create_users, которая создаст 3 типа пользователя (из role_choice), с default avatar (admin.png user.png crm_admin.png)
-
-
-Развернуть DRF проект, и создать приложение user_selection подключить Postgresql и Redis
-создать суперпользователя
-создать модель User(AbstractBaseUser), добавив к Django users : role_choice (Пользователь, менеджер, CRM- администратор).
-Offer (bool) .
-Avatar (аватар пользователя).
-(views.py, serializer.py, admin.py urls.py (GET /api/users/{id})
-Используя Django command, создать команду create_users, которая создаст 3 типа пользователя (из role_choice), с default avatar (admin.png user.png crm_admin.png)
