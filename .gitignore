@@ -136,3 +136,4 @@ GitHub.sublime-settings
 !.vscode/extensions.json
 .history
 .idea/
+user_selection/user_selection/password.py
