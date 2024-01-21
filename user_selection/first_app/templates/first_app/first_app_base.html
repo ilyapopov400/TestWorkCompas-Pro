@@ -1,0 +1,28 @@
+{% extends 'base.html'  %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'first_app/css/first_app_base.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% block content-app %}
+    {% endblock %}
+
+<div class="footer">
+    <div>
+        <a href="{% url 'family-show' %}">просмотр списка фамилий</a> |
+        <a href="http://127.0.0.1:8000/api/v1/familylist/">просмотр списка фамилий API</a>
+    </div>
+    <div>
+        <a href="{% url 'register' %}">регистрация</a>
+    </div>
+    <div>
+        <a href="http://127.0.0.1:8000/api/v1/register/login">login API</a> |
+        <a href="http://127.0.0.1:8000/api/v1/register/logout">logout API</a>
+    </div>
+    <div>
+        <a href="{% url 'first-app-index' %}">возврат на главную страницу</a>
+    </div>
+</div>
+{% endblock %}

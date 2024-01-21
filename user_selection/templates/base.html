@@ -5,29 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block css %} {% endblock %}
 </head>
 
 <body>
 <div>
     {% block content %} {% endblock %}</title>
-
-    <div>
-        <a href="{% url 'family-show' %}">просмотр списка фамилий</a> |
-        <a href="http://127.0.0.1:8000/api/v1/familylist/">просмотр списка фамилий API</a>
-
-    </div>
-    <div>
-        <a href="{% url 'register' %}">регистрация</a>
-
-    </div>
-    <di>
-        <a href="http://127.0.0.1:8000/api/v1/register/login">login API</a> |
-        <a href="http://127.0.0.1:8000/api/v1/register/logout">logout API</a>
-    </di>
-    <div>
-        <a href="{% url 'first-app-index' %}">возврат на главную страницу</a>
-    </div>
 </div>
 </body>
 </html>

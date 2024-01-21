@@ -1,24 +1,23 @@
-{% extends 'base.html'  %}
+{% extends 'first_app/first_app_base.html'  %}
 {% load static %}
 
 {% block title %} регистрация пользователя {% endblock %}
 
-{% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    <div>
-        {% for field in form %}
-        <ul>
-        <li>{{ field }}</li>
-        </ul>
-        {% endfor %}
-    </div>
-
-    <div>
-        <button type="submit">Регистрация</button> |
-        <button type="reset">очистить форму</button>
-    </div>
-</form>
-
+{% block content-app %}
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="base">
+            {% for field in form %}
+            <ul>
+            <li>{{ field }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="base">
+            <button type="submit">Регистрация</button> |
+            <button type="reset">очистить форму</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

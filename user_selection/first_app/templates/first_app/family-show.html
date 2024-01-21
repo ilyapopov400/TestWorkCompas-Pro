@@ -1,27 +1,28 @@
-{% extends 'base.html'  %}
+{% extends 'first_app/first_app_base.html'  %}
 {% load static %}
 
 {% block title %} список записей family {% endblock %}
 
 
-{% block content %}
+{% block content-app %}
 
-<div>
-    <h2>Просмотр записей family</h2>
-</div>
-<div>
-    {% if family %}
-    {% for one_family in family %}
-    <ul>
-        <li>Имя: {{ one_family.first_name }}</li>
-        <li>Фамилия: {{ one_family.second_name }}</li>
-    </ul>
-    {% endfor %}
-    {% else %}
+<div class="base">
     <div>
-        <h3>Записей еще нет</h3>
+        <h2>Просмотр записей family</h2>
     </div>
-    {% endif %}
+    <div>
+        {% if family %}
+        {% for one_family in family %}
+        <ul>
+            <li>Имя: {{ one_family.first_name }}</li>
+            <li>Фамилия: {{ one_family.second_name }}</li>
+        </ul>
+        {% endfor %}
+        {% else %}
+        <div>
+            <h3>Записей еще нет</h3>
+        </div>
+        {% endif %}
+    </div>
 </div>
-
 {% endblock %}
