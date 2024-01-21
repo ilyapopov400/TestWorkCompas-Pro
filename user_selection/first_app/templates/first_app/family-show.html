@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>список записей family</title>
-</head>
-<body>
+{% extends 'base.html'  %}
+{% load static %}
+
+{% block title %} список записей family {% endblock %}
+
+
+{% block content %}
+
 <div>
     <h2>Просмотр записей family</h2>
 </div>
 <div>
     {% if family %}
-        {% for one_family in family %}
-            <ul>
-                <li>Имя: {{ one_family.first_name }}</li>
-                <li>Фамилия: {{ one_family.second_name }}</li>
-            </ul>
-        {% endfor %}
+    {% for one_family in family %}
+    <ul>
+        <li>Имя: {{ one_family.first_name }}</li>
+        <li>Фамилия: {{ one_family.second_name }}</li>
+    </ul>
+    {% endfor %}
     {% else %}
     <div>
         <h3>Записей еще нет</h3>
     </div>
     {% endif %}
 </div>
-<div>
-        <a href="{% url 'first-app-index' %}">возврат на главную страницу</a>
-</div>
-</body>
-</html>
+
+{% endblock %}
