@@ -36,18 +36,18 @@ class FamilyAPIViews(generics.ListAPIView):
     serializer_class = serializers.FamilySerializer
 
 
-class RegisterUser(FormView, CreateView):
-    '''
-    регистрация пользователя
-    '''
-    form_class = forms.FormRegisterUser
-    template_name = "first_app/register_user.html"
-    success_url = reverse_lazy('first-app-index')
-
-    def form_valid(self, form):
-        form.save()
-        return super(RegisterUser, self).form_valid(form)
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return dict(list(context.items()))
+# class RegisterUser(FormView, CreateView):
+#     '''
+#     регистрация пользователя
+#     '''
+#     form_class = forms.FormRegisterUser
+#     template_name = "first_app/register_user.html"
+#     success_url = reverse_lazy('first-app-index')
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return super(RegisterUser, self).form_valid(form)
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return dict(list(context.items()))
