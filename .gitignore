@@ -137,3 +137,4 @@ GitHub.sublime-settings
 .history
 .idea/
 user_selection/user_selection/password.py
+*password.env
