@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block css %} {% endblock %}
 </head>
-
 <body>
-<div>
-    {% block content %} {% endblock %}</title>
+<div class="header">
+    {% include 'includes/header.html' %}
 </div>
-<div>
-    <h3>Регистрация пользователей</h3>
-    <a href="{% url 'users:login' %}">login</a> |
-    <a href="{% url 'users:logout' %}">logout</a>
+{% block content %} {% endblock %}
+<div class="navbar">
+    {% include 'includes/navbar.html' %}
 </div>
+
 </body>
 </html>

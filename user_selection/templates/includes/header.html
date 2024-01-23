@@ -1,0 +1,5 @@
+{% if user.is_authenticated %}
+    <h3>Вы подключены с логином: {{ user.username }}</h3>
+{% else %}
+    <p>Вы не авторизованны</p>
+{% endif %}
