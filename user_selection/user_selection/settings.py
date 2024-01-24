@@ -136,4 +136,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'first_app.User'
+AUTH_USER_MODEL = 'first_app.User'  # используемая модель User
+
+LOGOUT_REDIRECT_URL = 'first-app-index'  # редирект при выходе из учетной записи
