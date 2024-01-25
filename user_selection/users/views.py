@@ -6,7 +6,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.base import TemplateView
 
+from django.contrib.auth import get_user_model
+
 from . import forms
+from . import models
 
 
 # Create your views here.
@@ -37,6 +40,15 @@ class LogoutUser(LogoutView):
     выход пользователя из учетной записи
     '''
 
+
+def userslist(request):
+    users_list = get_user_model().objects.all()
+    template_name = 'users/users-list.html'
+    context = {
+        "title": "зарегистрированные пользователи",
+        "users_list": users_list,
+    }
+    return render(request=request, template_name=template_name, context=context)
 
 
 # def login_user(request):
