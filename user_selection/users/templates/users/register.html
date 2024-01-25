@@ -1,0 +1,22 @@
+{% extends 'base.html'  %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/users_base.css' %}">
+{% endblock %}
+
+{% block title %} регистрация {% endblock %}
+
+{% block content %}
+<div class="register">
+    <h3>Регистрация пользователей</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <button type="submit">Регистрация</button> |
+            <button type="reset">Очистить форму</button>
+        </p>
+    </form>
+</div>
+{% endblock %}

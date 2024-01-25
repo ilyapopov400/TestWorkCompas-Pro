@@ -5,11 +5,12 @@
 <link rel="stylesheet" href="{% static 'users/css/users_base.css' %}">
 {% endblock %}
 
-{% block title %} регистрация {% endblock %}
+{% block title %} регистрация и аутентификация {% endblock %}
 
 {% block content %}
 <div class="register">
-    <h3>Регистрация пользователей</h3>
+    <h3>Регистрация и аутентификация пользователей</h3>
+    <a href="{% url 'users:register-user' %}">регистрация</a> |
     <a href="{% url 'users:login' %}">войти по логину</a> |
     <a href="{% url 'users:logout' %}">выйти</a> |
     <a href="{% url 'users:userslist' %}">список всех зарегистрированных пользователей</a>

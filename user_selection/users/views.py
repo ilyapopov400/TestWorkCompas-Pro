@@ -41,6 +41,13 @@ class LogoutUser(LogoutView):
     '''
 
 
+def register(request):
+    form = forms.RegisterUserForm
+    template_name = "users/register.html"
+    context = {"form": form}
+    return render(request=request, template_name=template_name, context=context)
+
+
 def userslist(request):
     users_list = get_user_model().objects.all()
     template_name = 'users/users-list.html'
