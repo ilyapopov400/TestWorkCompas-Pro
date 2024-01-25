@@ -2,6 +2,7 @@ from rest_framework import generics
 
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
 from rest_framework.reverse import reverse_lazy
 
@@ -19,13 +20,15 @@ class FirstAppIndex(TemplateView):
     template_name = 'first_app/first_app-index.html'
 
 
-class FamilyShow(ListView):
+class FamilyShow(LoginRequiredMixin, ListView):
     '''
     просмотр всех записей в таблице Family
+    LoginRequiredMixin: класс для ограничения доступа для незарегистрированных пользователей
     '''
     template_name = 'first_app/family-show.html'
     model = models.Family
     context_object_name = 'family'
+    login_url = 'users:register'  # маршрут перенаправления для незарегистрированных пользователей
 
 
 class FamilyAPIViews(generics.ListAPIView):
@@ -34,7 +37,6 @@ class FamilyAPIViews(generics.ListAPIView):
     '''
     queryset = models.Family.objects.all()
     serializer_class = serializers.FamilySerializer
-
 
 # class RegisterUser(FormView, CreateView):
 #     '''
