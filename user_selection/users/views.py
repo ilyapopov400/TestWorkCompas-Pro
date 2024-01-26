@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import ListView
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.base import TemplateView
 
@@ -42,20 +43,46 @@ class LogoutUser(LogoutView):
 
 
 def register(request):
-    form = forms.RegisterUserForm
+    '''
+    регистрация пользователя
+    :param request:
+    :return:
+    '''
+    if request.method == "POST":
+        form = forms.RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data.get("password"))
+            user.save()
+            return render(request=request, template_name="users/register-done.html")
+    else:
+        form = forms.RegisterUserForm()
+
     template_name = "users/register.html"
     context = {"form": form}
     return render(request=request, template_name=template_name, context=context)
 
 
-def userslist(request):
-    users_list = get_user_model().objects.all()
+class UserList(ListView):
+    '''
+    просмотр всех зарегистрированных пользователей
+    '''
     template_name = 'users/users-list.html'
-    context = {
-        "title": "зарегистрированные пользователи",
-        "users_list": users_list,
-    }
-    return render(request=request, template_name=template_name, context=context)
+    model = get_user_model()
+    context_object_name = 'users_list'
+
+
+# def userslist(request):
+#     '''
+#     просмотр всех зарегистрированных пользователей
+#     '''
+#     users_list = get_user_model().objects.all()
+#     template_name = 'users/users-list.html'
+#     context = {
+#         "title": "зарегистрированные пользователи",
+#         "users_list": users_list,
+#     }
+#     return render(request=request, template_name=template_name, context=context)
 
 
 # def login_user(request):

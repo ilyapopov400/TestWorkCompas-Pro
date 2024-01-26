@@ -31,3 +31,6 @@ class User(AbstractUser):
         choices=CHOICES,
         default=CHOICES[0],
     )
+
+    class Meta:
+        ordering = ('pk', 'username',)  # сортировка таблицы при ее отображении
