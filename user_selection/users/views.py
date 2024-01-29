@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.base import TemplateView
 
@@ -42,25 +42,32 @@ class LogoutUser(LogoutView):
     '''
 
 
-def register(request):
-    '''
-    регистрация пользователя
-    :param request:
-    :return:
-    '''
-    if request.method == "POST":
-        form = forms.RegisterUserForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data.get("password"))
-            user.save()
-            return render(request=request, template_name="users/register-done.html")
-    else:
-        form = forms.RegisterUserForm()
-
+class RegisterUser(CreateView):
+    form_class = forms.RegisterUserForm
     template_name = "users/register.html"
-    context = {"form": form}
-    return render(request=request, template_name=template_name, context=context)
+    extra_context = {"title": "регистрация"}
+    success_url = reverse_lazy("users:login")
+
+
+# def register(request):
+#     '''
+#     регистрация пользователя
+#     :param request:
+#     :return:
+#     '''
+#     if request.method == "POST":
+#         form = forms.RegisterUserForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.set_password(form.cleaned_data.get("password"))
+#             user.save()
+#             return render(request=request, template_name="users/register-done.html")
+#     else:
+#         form = forms.RegisterUserForm()
+#
+#     template_name = "users/register.html"
+#     context = {"form": form}
+#     return render(request=request, template_name=template_name, context=context)
 
 
 class UserList(ListView):
